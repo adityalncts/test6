@@ -16,7 +16,7 @@ constructor(props) {
 
 async onFormSubmit(image) {
   this.setState({ image });
-    var api = "https://cors-anywhere.herokuapp.com/https://registry.hub.docker.com/v1/repositories/ubuntu/tags";
+    var api = `https://cors-anywhere.herokuapp.com/https://registry.hub.docker.com/v1/repositories/${image}/tags`;
     var imagejson = await get(api,{'mode':'no-cors'})//.then(({response}) => {
     console.log(imagejson.data);
       //const { list: versions } = response.data;
