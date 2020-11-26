@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import ZipForm from './components/ZipForm';
-import { get } from 'axios';
+import ImageVersions from './components/ImageVersions';
+import SelectImageVersions from './components/SelectImageVersions';
+//import { get } from 'axios';
 
 class App extends React.Component {
-constructor(props) {
+/*constructor(props) {
   super(props);
   this.state = {
     image: '',
@@ -24,11 +25,11 @@ async onFormSubmit(image) {
       //this.setState({ image });
    this.setState({ versions: imagejson.data });
     //});
-}
+}*/
   render() {
     return (
       <div className='app'>
-        <ZipForm onSubmit={this.onFormSubmit} />
+        <ImageVersions />
       </div>
     );
   }
