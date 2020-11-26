@@ -27,14 +27,14 @@ submitImageName(e) {
     return (
       <div className="zip-form">
         <form onSubmit={this.submitImageName}>
-          <label htmlFor="zipcode">Zip Code</label>
+          <label htmlFor="zipcode">Enter the Base Image Name</label>
           <input
             className="form-control"
             type="input"
-            name="zipcode"
+            name="image"
             value={this.state.image}
             onInput={this.inputUpdated} />
-          <button type="submit" className='btn btn-success'>Get the forecast!!</button>
+          <button type="submit" className='btn btn-success'>Get the image tags</button>
         </form>
       </div>
     );

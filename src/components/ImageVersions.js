@@ -3,6 +3,7 @@
 import React from 'react';
 import ZipForm from './ZipForm';
 import { get } from 'axios';
+import SelectJavaVersion from './SelectJavaVersion';
 
 class ImageVersions extends React.Component {
 constructor(props) {
@@ -43,11 +44,13 @@ onImageSent(versions);
     return (
       <div className='imageversions'>
         <ZipForm onSubmit={this.onFormSubmit} />
+        <label htmlFor="imageversions">Select the Base Image tag</label>
         <select>
             {this.state.versions.map((e, key) => {
                 return <option key={key} value={e.name}>{e.name}</option>;
             })}
          </select>
+         <SelectJavaVersion />
       </div>
     );
   }
