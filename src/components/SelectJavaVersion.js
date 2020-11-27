@@ -5,7 +5,8 @@ class SelectJavaVersion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        versionJson : [
+        selectedversion : '',
+        versionsJson : [
           {
             "id":1,
             "version": "Foo"
@@ -25,14 +26,16 @@ class SelectJavaVersion extends React.Component {
         ]
         };
         }
+  handleChange = (event) =>
+    this.setState({selectedversion: event.target.value});
 render()
 {
   return (
     <>
       <div>
             <label htmlFor="selectjavaversions">Select the java version</label>
-            <select>
-             {this.state.versionJson.map((e, key) => {
+            <select value={this.state.selectedversion} onChange={this.handleChange}>
+             {this.state.versionsJson.map((e, key) => {
                   return <option key={key} value={e.version}>{e.version}</option>;
                         })}
          		</select>
