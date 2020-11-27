@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 //import './App.css';
 import React from 'react';
-import ZipForm from './ZipForm';
+import GetImage from './GetImage';
 import { get } from 'axios';
 import SelectJavaVersion from './SelectJavaVersion';
 
@@ -12,10 +12,12 @@ constructor(props) {
     image: '',
     versions: [],
     selectedjavaversion: '',
+    imagetag:'',
   };
   this.onFormSubmit = this.onFormSubmit.bind(this);
   //this.sendImageVersions = this.sendImageVersions.bind(this);
   this.selectedJavaVersion = this.selectedJavaVersion.bind(this);
+  this.submitImageTag = this.submitImageTag.bind(this);
 }
 
 async onFormSubmit(image) {
@@ -37,12 +39,16 @@ const variable = varVersion;
 console.log("this is selectedjavaversion");
 console.log(variable);
 }
+  submitImageTag(event) {
+    //event.preventDefault();
+    this.setState({imagetag: event.target.value});
+    }
   render() {
     return (
       <div className='imageversions'>
-        <ZipForm onSubmit={this.onFormSubmit} />
+        <GetImage onSubmit={this.onFormSubmit} />
         <label htmlFor="imageversions">Select the Base Image tag</label>
-        <select>
+        <select onChange={this.submitImageTag}>
             {this.state.versions.map((e, key) => {
                 return <option key={key} value={e.name}>{e.name}</option>;
             })}

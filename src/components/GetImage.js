@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ZipForm extends Component {
+class GetImage extends Component {
 constructor(props) {
   super(props);
 
@@ -21,13 +21,13 @@ submitImageName(e) {
   const { onSubmit } = this.props;
 
   onSubmit(image);
-  this.setState({ image: '' });
+  //this.setState({ image: '' });
 }
   render() {
     return (
-      <div className="zip-form">
+      <div className="getimage-form">
         <form onSubmit={this.submitImageName}>
-          <label htmlFor="zipcode">Enter the Base Image Name</label>
+          <label htmlFor="getimage">Enter the Base Image Name</label>
           <input
             className="form-control"
             type="input"
@@ -41,4 +41,4 @@ submitImageName(e) {
   }
 }
 
-export default ZipForm;
+export default GetImage;
