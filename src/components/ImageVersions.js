@@ -11,13 +11,16 @@ constructor(props) {
   this.state = {
     image: '',
     versions: [],
+    selectedjavaversion: '',
   };
   this.onFormSubmit = this.onFormSubmit.bind(this);
-  this.sendImageVersions = this.sendImageVersions.bind(this);
+  //this.sendImageVersions = this.sendImageVersions.bind(this);
+  this.selectedJavaVersion = this.selectedJavaVersion.bind(this);
 }
 
 async onFormSubmit(image) {
   this.setState({ image });
+  //this.setState({ selectedversion });
     var api = `https://cors-anywhere.herokuapp.com/https://registry.hub.docker.com/v1/repositories/${image}/tags`;
     var imagejson = await get(api,{'mode':'no-cors'})//.then(({response}) => {
     console.log(imagejson.data);
@@ -27,20 +30,14 @@ async onFormSubmit(image) {
    this.setState({ versions: imagejson.data });
     //});
 }
-sendImageVersions(v) {
-v.preventDefault();
-const { versions } = this.state;
-const { onImageSent } = this.props;
-onImageSent(versions);
-//this.setState({})
+
+selectedJavaVersion(varVersion) {
+this.setState({ selectedjavaversion: varVersion });
+const variable = varVersion;
+console.log("this is selectedjavaversion");
+console.log(variable);
 }
-
-
-
   render() {
-  const optiontemplate = this.state.versions.map(v => (
-       					<option value={v.name}>{v.name}</option>
-       					));
     return (
       <div className='imageversions'>
         <ZipForm onSubmit={this.onFormSubmit} />
@@ -50,7 +47,7 @@ onImageSent(versions);
                 return <option key={key} value={e.name}>{e.name}</option>;
             })}
          </select>
-         <SelectJavaVersion />
+         <SelectJavaVersion onSendVersion={this.selectedJavaVersion.bind(this)} />
       </div>
     );
   }

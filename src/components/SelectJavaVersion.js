@@ -5,7 +5,7 @@ class SelectJavaVersion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        selectedversion : '',
+        selectedjavaversion : '',
         versionsJson : [
           {
             "id":1,
@@ -25,22 +25,41 @@ class SelectJavaVersion extends React.Component {
           }
         ]
         };
+        this.submitJavaVersion = this.submitJavaVersion.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         }
-  handleChange = (event) =>
-    this.setState({selectedversion: event.target.value});
+  submitJavaVersion(event) {
+    //event.preventDefault();
+    this.setState({selectedjavaversion: event.target.value});
+    //const { selectedjavaversion } = this.state;
+    //const { onSendVersion } = this.props;
+    //onSendVersion(selectedjavaversion);
+    const varjava = this.state.selectedjavaversion;
+    console.log("this in called on change");
+    console.log("this is submitJavaVersion", varjava);
+    this.props.onSendVersion(event.target.value);
+
+
+    //this.setState({ image: '' });
+  }
+  handleChange() {
+    const temp = this.state.selectedjavaversion;
+    console.log("this is value",temp);
+    return temp;
+    //this.setState({selectedjavaversion: event.target.value});
+    //submitJavaVersion();
+    }
 render()
 {
   return (
-    <>
       <div>
             <label htmlFor="selectjavaversions">Select the java version</label>
-            <select value={this.state.selectedversion} onChange={this.handleChange}>
+            <select onChange = {this.submitJavaVersion.bind(this)}>
              {this.state.versionsJson.map((e, key) => {
                   return <option key={key} value={e.version}>{e.version}</option>;
                         })}
          		</select>
        </div>
-    </>
     );
 }
 }
