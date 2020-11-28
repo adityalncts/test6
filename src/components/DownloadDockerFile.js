@@ -20,10 +20,10 @@ constructor(props) {
   console.log(variable);
   }
 
-onSendVersionAndTag(version, tag)
+onSendVersionAndTag(version, imagename)
 {
-    this.setState({ image: version });
-    this.setState({ imagetag: tag });
+    this.setState({ imagetag: version });
+    this.setState({ image: imagename });
 }
 render(){
     return(

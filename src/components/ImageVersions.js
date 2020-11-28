@@ -37,8 +37,8 @@ async onFormSubmit(image) {
 
       submitImageAndTag(event) {
       this.setState({imagetag: event.target.value});
-      const imagetemptag = this.state.imagetag
-        this.props.onSendVersionAndTag(event.target.value,imagetemptag);
+      const imagename = this.state.image
+        this.props.onSendVersionAndTag(event.target.value,imagename);
         //this.setState({ image: '' });
       }
   render() {
