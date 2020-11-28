@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import ImageVersions from './components/ImageVersions';
-import SelectImageVersions from './components/SelectImageVersions';
+import DownloadDockerFile from './components/DownloadDockerFile';
+//import SelectImageVersions from './components/SelectImageVersions';
 //import { get } from 'axios';
 
 class App extends React.Component {
@@ -29,7 +29,7 @@ async onFormSubmit(image) {
   render() {
     return (
       <div className='app'>
-        <ImageVersions />
+        <DownloadDockerFile />
       </div>
     );
   }
